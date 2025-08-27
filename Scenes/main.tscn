@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://0cdnry12lqwy"]
+
+[ext_resource type="Script" path="res://Scenes/block.gd" id="1_prp2k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q70la"]
+size = Vector2(140, 140)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_52lr8"]
+size = Vector2(902.5, 119)
+
+[node name="Main" type="Node2D"]
+
+[node name="Block" type="RigidBody2D" parent="."]
+script = ExtResource("1_prp2k")
+
+[node name="ColorRect" type="ColorRect" parent="Block"]
+offset_left = 506.0
+offset_top = 56.0
+offset_right = 646.0
+offset_bottom = 196.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block"]
+position = Vector2(576, 126)
+shape = SubResource("RectangleShape2D_q70la")
+
+[node name="Platform" type="StaticBody2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Platform"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 125.0
+offset_top = 492.0
+offset_right = 1027.0
+offset_bottom = 611.0
+grow_horizontal = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+position = Vector2(575.75, 551.5)
+shape = SubResource("RectangleShape2D_52lr8")
+debug_color = Color(0.832538, 0, 0.238212, 0.42)
