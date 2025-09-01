@@ -1,14 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://0cdnry12lqwy"]
+[gd_scene load_steps=3 format=3 uid="uid://0cdnry12lqwy"]
 
-[ext_resource type="Script" path="res://Scripts/block.gd" id="1_hy75b"]
+[ext_resource type="PackedScene" uid="uid://bs8c3m83otyvd" path="res://Scenes/block.tscn" id="1_o8dm0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_52lr8"]
 size = Vector2(902.5, 119)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdcfi"]
-size = Vector2(168.5, 152)
-
 [node name="Main" type="Node2D"]
+
+[node name="Block" parent="." instance=ExtResource("1_o8dm0")]
+position = Vector2(6, -155)
 
 [node name="Platform" type="StaticBody2D" parent="."]
 
@@ -17,26 +17,12 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = 125.0
-offset_top = 492.0
+offset_top = 517.0
 offset_right = 1027.0
-offset_bottom = 611.0
+offset_bottom = 636.0
 grow_horizontal = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
-position = Vector2(575.75, 551.5)
+position = Vector2(575.75, 576.5)
 shape = SubResource("RectangleShape2D_52lr8")
 debug_color = Color(0.832538, 0, 0.238212, 0.42)
-
-[node name="Block" type="CharacterBody2D" parent="."]
-script = ExtResource("1_hy75b")
-
-[node name="ColorRect" type="ColorRect" parent="Block"]
-offset_left = 488.0
-offset_top = 26.0
-offset_right = 656.0
-offset_bottom = 178.0
-color = Color(1, 0, 0, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Block"]
-position = Vector2(571.75, 102)
-shape = SubResource("RectangleShape2D_kdcfi")

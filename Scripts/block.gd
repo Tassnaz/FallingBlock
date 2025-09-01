@@ -1,31 +1,19 @@
-extends CharacterBody2D
+extends RigidBody2D
 
-# Variables
-var Gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var BlockStartPos = Vector2()
-var CanDrop = false
-@export var DropSpeed = 1
-@export var MoveSpeed = 10
+var can_click = false
 
 func _ready():
-	# Gets the initial position
-	BlockStartPos = self.position
-
+	freeze = true
+	
 func _physics_process(delta):
-	# Makes it drop
-	if Input.is_action_just_pressed("Drop"):
-		CanDrop = true
+	if Input.is_action_just_pressed("LeftClick") && can_click == true:
+		freeze = false
 	
-	if CanDrop == true:
-		velocity.y += Gravity * DropSpeed * delta
-	
-	# Reset and making block stay in place after
 	if Input.is_action_just_pressed("Reset"):
-		CanDrop = false
+		get_tree().reload_current_scene()
+
+func _on_mouse_box_mouse_entered():
+	can_click = true
 	
-	if CanDrop == false:
-		position.y = BlockStartPos
-	
-	
-	
-	move_and_slide()
+func _on_mouse_box_mouse_exited():
+	can_click = false

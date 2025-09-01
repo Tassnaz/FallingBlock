@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://bs8c3m83otyvd"]
+
+[ext_resource type="Script" path="res://Scripts/block.gd" id="1_qxedk"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6iajj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njwlo"]
+size = Vector2(128, 121)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j74kv"]
+size = Vector2(128.5, 121)
+
+[node name="Block" type="RigidBody2D"]
+script = ExtResource("1_qxedk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.054902, 0.054902, 1)
+position = Vector2(554, 292.5)
+scale = Vector2(128, 121)
+texture = SubResource("PlaceholderTexture2D_6iajj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(554, 292.5)
+shape = SubResource("RectangleShape2D_njwlo")
+
+[node name="MouseBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseBox"]
+position = Vector2(553.75, 292.5)
+shape = SubResource("RectangleShape2D_j74kv")
+debug_color = Color(1.97336e-06, 0.639287, 0.366812, 0.42)
+
+[connection signal="mouse_entered" from="MouseBox" to="." method="_on_mouse_box_mouse_entered"]
+[connection signal="mouse_exited" from="MouseBox" to="." method="_on_mouse_box_mouse_exited"]
