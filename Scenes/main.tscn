@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://0cdnry12lqwy"]
+[gd_scene load_steps=4 format=3 uid="uid://0cdnry12lqwy"]
 
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_3an2g"]
 [ext_resource type="PackedScene" uid="uid://bs8c3m83otyvd" path="res://Scenes/block.tscn" id="1_o8dm0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_52lr8"]
 size = Vector2(902.5, 119)
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_3an2g")
 
 [node name="Block" parent="." instance=ExtResource("1_o8dm0")]
 position = Vector2(6, -155)

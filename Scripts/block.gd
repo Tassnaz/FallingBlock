@@ -3,11 +3,11 @@ extends RigidBody2D
 var can_click = false
 
 func _ready():
-	freeze = true
+	freeze = false
 	
 func _physics_process(delta):
 	if Input.is_action_just_pressed("LeftClick") && can_click == true:
-		freeze = false
+		queue_free()
 	
 	if Input.is_action_just_pressed("Reset"):
 		get_tree().reload_current_scene()
