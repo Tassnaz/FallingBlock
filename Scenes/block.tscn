@@ -14,7 +14,6 @@ size = Vector2(128.5, 121)
 script = ExtResource("1_qxedk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0.054902, 0.054902, 1)
 position = Vector2(554, 292.5)
 scale = Vector2(128, 121)
 texture = SubResource("PlaceholderTexture2D_6iajj")
