@@ -1,8 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bs8c3m83otyvd"]
 
 [ext_resource type="Script" path="res://Scripts/block.gd" id="1_qxedk"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6iajj"]
+[ext_resource type="Texture2D" uid="uid://b2mkm4tmm610w" path="res://Assets/ffffff.png" id="2_eaff6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_njwlo"]
 size = Vector2(128, 121)
@@ -14,18 +13,18 @@ size = Vector2(128.5, 121)
 script = ExtResource("1_qxedk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(554, 292.5)
-scale = Vector2(128, 121)
-texture = SubResource("PlaceholderTexture2D_6iajj")
+position = Vector2(603.551, 81.5)
+scale = Vector2(0.847344, 0.605)
+texture = ExtResource("2_eaff6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(554, 292.5)
+position = Vector2(603.102, 81.5039)
 shape = SubResource("RectangleShape2D_njwlo")
 
 [node name="MouseBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseBox"]
-position = Vector2(553.75, 292.5)
+position = Vector2(603, 82)
 shape = SubResource("RectangleShape2D_j74kv")
 debug_color = Color(1.97336e-06, 0.639287, 0.366812, 0.42)
 

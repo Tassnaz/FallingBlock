@@ -21,8 +21,6 @@ func _ready():
 	
 func _physics_process(delta):
 	
-	
-	
 	if Input.is_action_just_pressed("LeftClick") && can_click == true:
 		queue_free()
 	
