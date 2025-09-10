@@ -1,5 +1,6 @@
 extends Node2D
 
+
 @onready var BlockLoad = load("res://Scenes/block.tscn")
 
 @onready var RandNr = RandomNumberGenerator.new()
@@ -13,9 +14,11 @@ var SpawnPosY = -170
 var RandX
 
 @export var RespawnTime = 0.5
+@export var BlocksPerSpawn = 3
 
 func _ready():
 	SimpleCountdownTimer = RespawnTime
+	randomize()
 
 func generate_Randx():
 	RandX = RandNr.randf_range(SpawnNegX, SpawnPosX)
@@ -25,14 +28,11 @@ func _physics_process(delta):
 		SimpleCountdownTimer = SimpleCountdownTimer -1 * delta
 		
 	else:
-		
-		generate_Randx()
-		
-		var NewBlock = BlockLoad.instantiate()
-		
-		NewBlock.position.x = RandX
-		NewBlock.position.y = SpawnPosY
-		
-		add_child(NewBlock)
+		for i in range(BlocksPerSpawn):
+			generate_Randx()
+			
+			var new_block = BlockLoad.instantiate()
+			new_block.position = Vector2(RandX, SpawnPosY)
+			add_child(new_block)
 		
 		SimpleCountdownTimer = RespawnTime

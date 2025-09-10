@@ -7,7 +7,8 @@ size = Vector2(1152.25, 119.5)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_3an2g")
-RespawnTime = 1.0
+RespawnTime = 0.01
+BlocksPerSpawn = 50
 
 [node name="Platform" type="StaticBody2D" parent="."]
 
@@ -24,3 +25,7 @@ grow_horizontal = 2
 position = Vector2(575.875, 588.25)
 shape = SubResource("RectangleShape2D_52lr8")
 debug_color = Color(0.832538, 0, 0.238212, 0.42)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 336)
+zoom = Vector2(0.05, 0.05)
