@@ -34,3 +34,8 @@ func _on_mouse_box_mouse_entered():
 	
 func _on_mouse_box_mouse_exited():
 	can_click = false
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	print("holy optimized")
+	queue_free()

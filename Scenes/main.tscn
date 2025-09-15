@@ -1,14 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://0cdnry12lqwy"]
+[gd_scene load_steps=4 format=3 uid="uid://0cdnry12lqwy"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_3an2g"]
+[ext_resource type="Script" path="res://Scripts/label.gd" id="2_5ihoc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_52lr8"]
 size = Vector2(1152.25, 119.5)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_3an2g")
-RespawnTime = 0.01
-BlocksPerSpawn = 50
+RespawnTime = 1.0
+BlocksPerSpawn = 10
+metadata/_edit_horizontal_guides_ = [-254.0, -38.0]
 
 [node name="Platform" type="StaticBody2D" parent="."]
 
@@ -28,4 +30,13 @@ debug_color = Color(0.832538, 0, 0.238212, 0.42)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 336)
-zoom = Vector2(0.05, 0.05)
+zoom = Vector2(0.1, 0.1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -5055.0
+offset_top = -2825.0
+offset_right = -4076.0
+offset_bottom = -2143.0
+theme_override_font_sizes/font_size = 500
+text = "FPS "
+script = ExtResource("2_5ihoc")

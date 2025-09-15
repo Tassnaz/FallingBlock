@@ -13,20 +13,25 @@ size = Vector2(128.5, 121)
 script = ExtResource("1_qxedk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(603.551, 81.5)
+position = Vector2(520.551, 279.5)
 scale = Vector2(0.847344, 0.605)
 texture = ExtResource("2_eaff6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(603.102, 81.5039)
+position = Vector2(520.102, 279.504)
 shape = SubResource("RectangleShape2D_njwlo")
 
 [node name="MouseBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseBox"]
-position = Vector2(603, 82)
+position = Vector2(520, 280)
 shape = SubResource("RectangleShape2D_j74kv")
 debug_color = Color(1.97336e-06, 0.639287, 0.366812, 0.42)
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(520.5, 279.5)
+scale = Vector2(6.35, 6.05)
+
 [connection signal="mouse_entered" from="MouseBox" to="." method="_on_mouse_box_mouse_entered"]
 [connection signal="mouse_exited" from="MouseBox" to="." method="_on_mouse_box_mouse_exited"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

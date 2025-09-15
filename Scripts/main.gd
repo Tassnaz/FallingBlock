@@ -36,3 +36,5 @@ func _physics_process(delta):
 			add_child(new_block)
 		
 		SimpleCountdownTimer = RespawnTime
+		
+		
