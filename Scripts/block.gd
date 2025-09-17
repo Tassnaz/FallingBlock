@@ -39,3 +39,7 @@ func _on_mouse_box_mouse_exited():
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	print("holy optimized")
 	queue_free()
+
+
+func _on_vaccum_area_entered(area):
+	queue_free()

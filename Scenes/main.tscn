@@ -1,15 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://0cdnry12lqwy"]
+[gd_scene load_steps=6 format=3 uid="uid://0cdnry12lqwy"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_3an2g"]
 [ext_resource type="Script" path="res://Scripts/label.gd" id="2_5ihoc"]
+[ext_resource type="PackedScene" uid="uid://b5eyb30rg3gnw" path="res://Scenes/vacuum.tscn" id="3_6onwv"]
+[ext_resource type="PackedScene" uid="uid://bs8c3m83otyvd" path="res://Scenes/block.tscn" id="4_a8nej"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_52lr8"]
 size = Vector2(1152.25, 119.5)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_3an2g")
-RespawnTime = 1.0
-BlocksPerSpawn = 10
+BlocksPerSpawn = 5
 metadata/_edit_horizontal_guides_ = [-254.0, -38.0]
 
 [node name="Platform" type="StaticBody2D" parent="."]
@@ -40,3 +41,11 @@ offset_bottom = -2143.0
 theme_override_font_sizes/font_size = 500
 text = "FPS "
 script = ExtResource("2_5ihoc")
+
+[node name="Vaccum" parent="." instance=ExtResource("3_6onwv")]
+position = Vector2(-51, 647)
+
+[node name="Block" parent="." instance=ExtResource("4_a8nej")]
+position = Vector2(1850, 1030)
+
+[connection signal="area_entered" from="Vaccum" to="Block" method="_on_vaccum_area_entered"]
