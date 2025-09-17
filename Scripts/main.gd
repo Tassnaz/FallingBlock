@@ -7,9 +7,9 @@ extends Node2D
 
 var SimpleCountdownTimer
 
-var SpawnNegX = -490
-var SpawnPosX = 534
-var SpawnPosY = -170
+var SpawnNegX = -4070
+var SpawnPosX = 4070
+var SpawnPosY = -3000
 
 var RandX
 
@@ -17,7 +17,10 @@ var RandX
 @export var BlocksPerSpawn = 3
 
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	
 	SimpleCountdownTimer = RespawnTime
+	
 	randomize()
 
 func generate_Randx():

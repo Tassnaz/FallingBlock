@@ -1,36 +1,45 @@
-[gd_scene load_steps=5 format=3 uid="uid://bs8c3m83otyvd"]
+[gd_scene load_steps=6 format=3 uid="uid://bs8c3m83otyvd"]
 
 [ext_resource type="Script" path="res://Scripts/block.gd" id="1_qxedk"]
-[ext_resource type="Texture2D" uid="uid://b2mkm4tmm610w" path="res://Assets/ffffff.png" id="2_eaff6"]
+[ext_resource type="Texture2D" uid="uid://cqarc8e7wjh6x" path="res://Assets/white circle.png" id="2_5ysud"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_njwlo"]
-size = Vector2(128, 121)
+[sub_resource type="CircleShape2D" id="CircleShape2D_pjqq0"]
+radius = 78.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_j74kv"]
-size = Vector2(128.5, 121)
+[sub_resource type="CircleShape2D" id="CircleShape2D_04mbr"]
+radius = 80.0999
+
+[sub_resource type="Environment" id="Environment_erjdv"]
+background_mode = 3
+glow_enabled = true
+glow_blend_mode = 1
 
 [node name="Block" type="RigidBody2D"]
 script = ExtResource("1_qxedk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(520.551, 279.5)
-scale = Vector2(0.847344, 0.605)
-texture = ExtResource("2_eaff6")
+self_modulate = Color(2, 2, 2, 1)
+position = Vector2(519.5, 299.5)
+scale = Vector2(0.258333, 0.258333)
+texture = ExtResource("2_5ysud")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(520.102, 279.504)
-shape = SubResource("RectangleShape2D_njwlo")
+position = Vector2(520, 299)
+shape = SubResource("CircleShape2D_pjqq0")
 
 [node name="MouseBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseBox"]
-position = Vector2(520, 280)
-shape = SubResource("RectangleShape2D_j74kv")
+position = Vector2(520, 299)
+shape = SubResource("CircleShape2D_04mbr")
 debug_color = Color(1.97336e-06, 0.639287, 0.366812, 0.42)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(520.5, 279.5)
-scale = Vector2(6.35, 6.05)
+position = Vector2(520, 298)
+scale = Vector2(5.025, 5.125)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_erjdv")
 
 [connection signal="mouse_entered" from="MouseBox" to="." method="_on_mouse_box_mouse_entered"]
 [connection signal="mouse_exited" from="MouseBox" to="." method="_on_mouse_box_mouse_exited"]

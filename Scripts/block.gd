@@ -5,6 +5,8 @@ var can_click = false
 
 func _ready():
 	
+	add_to_group("blocks")
+	
 	randomize()
 	
 	var colors = [
@@ -20,14 +22,8 @@ func _ready():
 	freeze = false
 	
 func _physics_process(delta):
-	
-	if Input.is_action_just_pressed("LeftClick") && can_click == true:
-		queue_free()
-	
 	if Input.is_action_just_pressed("Reset"):
 		get_tree().reload_current_scene()
-	
-	#print(global_position)
 
 func _on_mouse_box_mouse_entered():
 	can_click = true
@@ -35,11 +31,8 @@ func _on_mouse_box_mouse_entered():
 func _on_mouse_box_mouse_exited():
 	can_click = false
 
-
+# Deletes cube if not on screen for optimization
 func _on_visible_on_screen_notifier_2d_screen_exited():
+	Global.Score -= 1
 	print("holy optimized")
-	queue_free()
-
-
-func _on_vaccum_area_entered(area):
 	queue_free()

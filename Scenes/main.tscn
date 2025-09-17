@@ -1,51 +1,38 @@
-[gd_scene load_steps=6 format=3 uid="uid://0cdnry12lqwy"]
+[gd_scene load_steps=7 format=3 uid="uid://0cdnry12lqwy"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_3an2g"]
 [ext_resource type="Script" path="res://Scripts/label.gd" id="2_5ihoc"]
-[ext_resource type="PackedScene" uid="uid://b5eyb30rg3gnw" path="res://Scenes/vacuum.tscn" id="3_6onwv"]
+[ext_resource type="PackedScene" uid="uid://dlwc3urosuh44" path="res://Scenes/MouseArea.tscn" id="3_awdd7"]
 [ext_resource type="PackedScene" uid="uid://bs8c3m83otyvd" path="res://Scenes/block.tscn" id="4_a8nej"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_52lr8"]
-size = Vector2(1152.25, 119.5)
+[ext_resource type="PackedScene" uid="uid://bk2x7qdgs7odm" path="res://Scenes/score.tscn" id="4_eedha"]
+[ext_resource type="AudioStream" uid="uid://dai7va63y88ue" path="res://Assets/Music/game-music-loop-6-144641.mp3" id="6_plele"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_3an2g")
-BlocksPerSpawn = 5
 metadata/_edit_horizontal_guides_ = [-254.0, -38.0]
 
-[node name="Platform" type="StaticBody2D" parent="."]
+[node name="Block" parent="." instance=ExtResource("4_a8nej")]
+position = Vector2(3840, -2143)
 
-[node name="ColorRect" type="ColorRect" parent="Platform"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_top = 529.0
-offset_right = 1152.0
-offset_bottom = 648.0
-grow_horizontal = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
-position = Vector2(575.875, 588.25)
-shape = SubResource("RectangleShape2D_52lr8")
-debug_color = Color(0.832538, 0, 0.238212, 0.42)
+[node name="MouseArea" parent="." instance=ExtResource("3_awdd7")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 336)
 zoom = Vector2(0.1, 0.1)
 
-[node name="Label" type="Label" parent="."]
+[node name="Score" parent="." instance=ExtResource("4_eedha")]
+
+[node name="FPS Counter" type="Label" parent="."]
 offset_left = -5055.0
 offset_top = -2825.0
 offset_right = -4076.0
 offset_bottom = -2143.0
-theme_override_font_sizes/font_size = 500
+theme_override_colors/font_color = Color(0.408329, 0.408329, 0.408329, 1)
+theme_override_font_sizes/font_size = 200
 text = "FPS "
 script = ExtResource("2_5ihoc")
 
-[node name="Vaccum" parent="." instance=ExtResource("3_6onwv")]
-position = Vector2(-51, 647)
-
-[node name="Block" parent="." instance=ExtResource("4_a8nej")]
-position = Vector2(1850, 1030)
-
-[connection signal="area_entered" from="Vaccum" to="Block" method="_on_vaccum_area_entered"]
+[node name="Background music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_plele")
+volume_db = -20.0
+autoplay = true
